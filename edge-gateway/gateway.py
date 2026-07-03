@@ -21,11 +21,13 @@ from asyncua import Client as OpcuaClient
 from pymodbus.client import AsyncModbusTcpClient
 import paho.mqtt.client as mqtt
 
-OPCUA_URL = "opc.tcp://localhost:4840/freeopcua/server/"
-MODBUS_HOST = "localhost"
-MODBUS_PORT = 5020
-MQTT_HOST = "localhost"
-MQTT_PORT = 1883
+import os
+
+OPCUA_URL = os.getenv("OPCUA_URL", "opc.tcp://localhost:4840/freeopcua/server/")
+MODBUS_HOST = os.getenv("MODBUS_HOST", "localhost")
+MODBUS_PORT = int(os.getenv("MODBUS_PORT", "5020"))
+MQTT_HOST = os.getenv("MQTT_HOST", "localhost")
+MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
 
 # Modbus register map - must match modbus_machine.py exactly, since
 # Modbus itself carries no field names, only raw register numbers
