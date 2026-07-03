@@ -4,6 +4,13 @@
 
 Two simulated machines feed data through an edge gateway into a cloud
 backend, mirroring a real Industrial IoT deployment.
+
+## Data flow
+
+    CNC Mill (OPC-UA)        --\
+                                 >-- Edge Gateway --> MQTT Broker --> Edge Processing --> Cloud API (FastAPI + InfluxDB)
+    Conveyor Motor (Modbus)  --/                                                     \-> Dashboard (Grafana)
+
 ## Zones
 
 - **OT / edge environment**: machines, edge gateway, MQTT broker, edge
